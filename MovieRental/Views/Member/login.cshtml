@@ -1,0 +1,35 @@
+﻿@model MovieRental.Models.LoginViewModel
+
+<h1> 會員登入 </h1>
+<form asp-action="Login" method="post">
+    <div>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @Html.AntiForgeryToken()
+        <div>
+            <input type="text" asp-for="Email"/>
+        </div>
+        <div>
+            <input type="password" asp-for="Password" />
+        </div>
+        <div>
+            <button type="submit">登入</button>
+        </div>
+    </div>
+</form>
+<p>
+    <a asp-action="Register">註冊</a>
+</p>
+<p>
+    <a asp-action="ForgetPassword">忘記密碼</a>
+</p>
